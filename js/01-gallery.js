@@ -17,8 +17,8 @@ elemDiv.insertAdjacentHTML("beforeend", elemMass);
 
 let elem;
 const handleClick = (event) => {
-  event.preventDefault();
-  if (event.target.classList.contains("gallery__image")) {
+  if (event.target.tagName === "IMG") {
+    event.preventDefault();
     elem = basicLightbox.create(
       `<img src=${event.target.getAttribute("source")} />`,
       {
@@ -34,8 +34,6 @@ const handleClick = (event) => {
       }
     );
     elem.show();
-  } else {
-    event.stopPropagation();
   }
 };
 elemDiv.addEventListener("click", handleClick);
